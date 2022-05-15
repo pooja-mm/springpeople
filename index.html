@@ -40,7 +40,7 @@ color: #007bff;
 margin-top: 13px;
 }
 
-#myDIV{
+#choose_file{
 margin-top: 20px;
 display: none;
 }
@@ -56,7 +56,39 @@ color: #fff;
 #dtText{
 margin-left: 590px;
 }
+.select_option{
+  width: 100%;
+}
+.submit_trainee{
+      margin-left: 89%;
+}
 
+ul {
+    list-style-type: none;
+}
+#text_align{
+  padding: 6px;
+}
+#exampleRadios1,#exampleRadios2{
+  margin-top: 15px;
+}
+.submit_complete{
+      background-color: #e46399;
+    color: #fff;
+    display: -webkit-inline-box;
+    display: inline-flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    font-family: "Helvetica Neue LT W01_71488914",Arial,Sans-Serif;
+    border-radius: 5px;
+    width: 200px;
+    border: none;
+}
+.submit_next_button{
+  float: right;
+}
 </style>
 
 </head>
@@ -64,6 +96,7 @@ margin-left: 590px;
 <div class="container py-5">
   <!-- For demo purpose -->
   <div class="row">
+<p class="marquee"><span id="dtText"></span></p>
     <div class="col-lg-12 text-white py-4 mx-auto" style="display: inline-flex;">
     <div class="col-sm-2">
       <!-- <h2 class="application_logo"> -->
@@ -105,71 +138,300 @@ margin-left: 590px;
     <div id="myTabContent" class="tab-content">
       <div id="trainee_details" role="tabpanel" aria-labelledby="trainee_details-tab" class="tab-pane fade px-4 py-5 show active">
           <div id="target" class="text-muted">
-  <form class="specify-numbers-price">
-  <div class="form-row addedrow" id="addedrow">
-   <div class="col-md-2 mb-3">
-     <label for="name">Name</label>
-     <input type="text" class="form-control" id="name">
-   </div>
-   <div class="col-md-2 mb-3">
-     <label for="role">Role</label>
-     <input type="text" class="form-control" id="role">
-   </div>
-   <div class="col-md-2 mb-3">
-     <label for="email">Email</label>
-     <input type="text" class="form-control" id="email">
-   </div>
-
-   <div class="col-md-3 mb-3">
-<label for="mobile">Mobile</label>
-     <div class="input-group">
-       <div class="input-group-prepend">
-         <span >
-          <select class="input-group-text" id="mobile">
-          <option>+91</option>
-          <option>+94</option>
-          </select>
-         </span>
-       </div>
-       <input type="text" class="form-control" id="mobile" placeholder="Mobile" aria-describedby="inputGroupPrepend" required>
-     </div>
-   </div>
-  </div>
-</form>
 </div>
 <a id="add" type="button" onclick="addNew()"><i class="fa fa-lg fa-plus-circle" aria-hidden="true"></i>  ADD NEW TRAINEE</a>
 <div class="upload_file row">
 <div class="col-sm-1">
-<i class="fa fa-lg fa-upload" aria-hidden="true"  onclick="myFunction()"></i>
+<i class="fa fa-lg fa-upload" aria-hidden="true"  onclick="fileHandler()"></i>
 </div>
 <div class="col-sm-1">
 <i class="fa fa-lg fa-file-text-o" aria-hidden="true"></i>
 </div>
+
 </div>
-<div id="myDIV">
+      
+<div id="choose_file">
 <input type="file" />
 </div>
       </div>
       <div id="billing_information" role="tabpanel" aria-labelledby="billing_information-tab" class="tab-pane fade px-4 py-5">
-        <p>Billing information</p>
+        <form>
+          <div class="row">
+            <div class="col-sm-6">
+              <h5>Contact Details</h5>
+            </div>
+            <div class="col-sm-6">
+              <h5>Billing Address</h5>
+            </div>
+          </div>
+          <br>
+          <div class="row">
+            <div class="col-sm-6">
+              <div class="form-group row">
+                <label for="inputPassword" class="col-sm-3 col-form-label">Select from trainee list</label>
+                <div class="col-sm-9">
+                  <select class="form-control select_option" id="inputPassword">
+                    <option>sdfd</option>
+                    <option>dsdds</option>
+                    <option>asdx</option>
+                    <option>asd</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="form-group row">
+                <label for="Addressline_one" class="col-sm-3 col-form-label">Addresline 1</label>
+                <div class="col-sm-9">
+                  <input type="text" class="form-control" id="Addressline_one">
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-6">
+              <div class="form-group row">
+                <label for="inputPassword" class="col-sm-3 col-form-label">Name</label>
+                <div class="col-sm-9">
+                  <input type="text" class="form-control" id="name_billing" >
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="form-group row">
+                <label for="Addressline_two" class="col-sm-3 col-form-label">Addresline 2</label>
+                <div class="col-sm-9">
+                  <input type="text" class="form-control" id="Addressline_two" >
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-6">
+              <div class="form-group row">
+                <label for="Email" class="col-sm-3 col-form-label">Email</label>
+                <div class="col-sm-9">
+                  <input id="Email" type="email" class="form-control" name="email" required>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="form-group row">
+                <label for="city" class="col-sm-3 col-form-label">City</label>
+                <div class="col-sm-9">
+                  <input type="text" class="form-control" id="city" >
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-6">
+              <div class="form-group row">
+                <label for="inputPassword" class="col-sm-3 col-form-label">Company</label>
+                <div class="col-sm-9">
+                  <input type="text" class="form-control" id="company" >
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="form-group row">
+                <label for="state" class="col-sm-3 col-form-label">State</label>
+                <div class="col-sm-9">
+                  <input type="text" class="form-control" id="state" >
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-6">
+              <div class="form-group row">
+                <label for="inputPassword" class="col-sm-3 col-form-label">Mobile</label>
+                <div class="col-sm-9">
+                  <div class="input-group">
+                     <div class="input-group-prepend">
+                       <span >
+                        <select class="input-group-text" id="Mobile">
+                        <option>+91</option>
+                        <option>+94</option>
+                        </select>
+                       </span>
+                     </div>
+                     <input type="text" class="form-control" id="mobile" placeholder="Mobile" aria-describedby="inputGroupPrepend" required>
+                   </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="form-group row">
+                <label for="country" class="col-sm-3 col-form-label">Country</label>
+                <div class="col-sm-9">
+                  <input type="text" class="form-control" id="country" >
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-6">
+              <div class="form-group row">
+                <label for="inputPassword" class="col-sm-3 col-form-label">Pincode</label>
+                <div class="col-sm-9">
+                  <input type="text" class="form-control" id="pincode" >
+                </div>
+              </div>
+            </div>
+          </div>
+      
+        </form>
       </div>
-      <div id="payments" role="tabpanel" aria-labelledby="payments-tab" class="tab-pane fade px-4 py-5">
-        <p>Review and Payments</p>
+      <div id="payments" role="tabpanel" aria-labelledby="payments-tab" class="tab-pane fade px-4 py-5" style="">
+        <h4>Trainee Details</h4>
+        <table width="100%" align="center" border=0>
+          <tr>
+          <td align="center"><div id="displayarea"></div></td>
+          <td align="center"><div id="displayarea1"></div></td>
+          <td align="center"><div id="displayarea2"></div></td>
+          <td align="center"><div id="displayarea3"></div></td>
+          </tr>
+          </table>
+          <br>
+          <div class="row" style="box-shadow: 2px 2px 8px 2px;">
+            <div class="col-sm-6">
+              <h4>Contact Details</h4>
+              <ul>
+                <li><div id="displayarea6"></div></li>
+                <li><div id="displayarea12"></div></li>
+                <li><div id="displayarea8"><i class="fa fa-envelope" aria-hidden="true"></i></div></li>
+              </ul>
+            </div>
+            <div class="col-sm-6">
+              <h4>Billing Details</h4>
+              <ul>
+                <li><div id="displayarea5"></div></li>
+                <li><div id="displayarea7"></div></li>
+                <li><div id="displayarea9"></div></li>
+                <li><div id="displayarea10"></div></li>
+                <li><div id="displayarea11"></div></li>
+                <li><div id="displayarea12"><i class="fa fa-mobile" aria-hidden="true"></i></div></li>
+                <li><div id="displayarea13"></div></li>
+                <li><div id="displayarea14"></div></li>
+                <li><div id="displayarea4"></div></li>
+              </ul>
+            </div>
+        </div><br>
+        <h4>Training Summary</h4>
+          <div class="row" style="width: 100%;">
+            <div class="col-sm-3">
+              Course
+              <div>Apache Cassandra Training</div>
+            </div>
+            <div class="col-sm-9" style="text-align: end;">
+              Price (INR)
+              <div>
+                <table style="float: right;">
+                  <tbody>
+                    <tr>
+                      <td id="text_align">Cost Per Trainee</td>
+                      <td id="text_align"><i class="fa fa-inr" aria-hidden="true"></i>29,995</td>
+                    </tr>
+                    <tr>
+                      <td id="text_align">No of Trainees</td>
+                      <td id="text_align">1</td>
+                    </tr>
+                    <tr>
+                      <td id="text_align">Total</td>
+                      <td id="text_align"><i class="fa fa-inr" aria-hidden="true"></i>29,995</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <p>Discount Code<input type="text" class="form-control" name=""><a href="#">APPLY</a></p>
+          </div>
+          <div class="row"><h6>Discount Code</h6></div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
+            <label class="form-check-label" for="exampleRadios1">
+              Proceed to Payment Gateway (Credit Card, Debit Card, Netbanking, Cash Cards)
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
+            <label class="form-check-label" for="exampleRadios2">
+              I have an authorized Purchase Order code
+            </label>
+          </div>
+          <div class="form-check" style="float: right">
+            <input class="form-check-input position-static" type="checkbox" id="blankCheckbox" value="option1" aria-label="...">Yes, I have read, understood and agree to the Terms & Conditions.
+          </div><br>
+          <button style="float: right;background-color: ;" class="submit_complete">Make a Payment  <i class="fa fa-arrow-circle-right" style="margin-left: 10px;" aria-hidden="true"></i></button>
       </div>
     </div>
+    <div class="row submit_next_button">
+      <button class="prevtab btn submit_complete" style="display: none;">Back</button>
+      <button class="nexttab btn submit_complete" type="button" value="Submit" name="submit" id="submit" onClick="display()">Submit</button>
+    </div>
   </div>
-
 </div>
 <script type="text/javascript">
-var data = '  <form class="specify-numbers-price"><div class="form-row" id="add_trainee_details"><div class="col-md-2 mb-3"><label for="trainee_name">Name</label><input type="text" class="form-control" name="supplyingLocRecord[]" id="trainee_name"></div><div class="col-md-2 mb-3"><label for="trainee_role">Role</label><input type="text" class="form-control" id="trainee_role"></div><div class="col-md-2 mb-3"><label trainee_email">Email</label><input type="text" class="form-control" id="trainee_email"></div><div class="col-md-3 mb-3"><label for="mobile">Mobile</label><div class="input-group"><div class="input-group-prepend"><span ><select class="input-group-text" id="mobile"><option>+91</option><option>+94</option></select></span></div><input type="text" class="form-control" id="mobile" placeholder="Mobile" aria-describedby="inputGroupPrepend" required></div></div><div class="col-md-2 mb-3"> <label></label><div class="col-md-2"><i class="fa fa-2x fa-trash-o" aria-hidden="true" id="remove" type="button"></i></div></div</div></div></form>'
-function myFunction() {
- var x = document.getElementById("myDIV");
+var data = '  <form class="specify-numbers-price"><div class="form-row" id="add_trainee_details"><div class="col-md-2 mb-3"><label for="trainee_name">Name</label><input type="text" class="form-control" name="supplyingLocRecord[]" id="trainee_name"></div><div class="col-md-2 mb-3"><label for="trainee_role">Role</label><input type="text" class="form-control" id="trainee_role"></div><div class="col-md-2 mb-3"><label trainee_email">Email</label><input type="text" class="form-control" id="trainee_email"></div><div class="col-md-3 mb-3"><label for="mobile">Mobile</label><div class="input-group"><div class="input-group-prepend"><span ><select class="input-group-text" id="Mobile"><option>+91</option><option>+94</option></select></span></div><input type="text" class="form-control" id="mobile" placeholder="Mobile" aria-describedby="inputGroupPrepend" required></div></div><div class="col-md-2 mb-3"> <label></label><div class="col-md-2"><i class="fa fa-2x fa-trash-o" aria-hidden="true" id="remove" type="button"></i></div></div</div></div></form>'
+
+// choose hide and show
+function fileHandler() {
+ var x = document.getElementById("choose_file");
  if (x.style.display === "none") {
    x.style.display = "block";
  } else {
    x.style.display = "none";
  }
 }
+
+// display trainee details in payment summary page
+function display()
+{
+var i, items = $('.nav-link'), pane = $('.tab-pane');
+for(i = 0; i < items.length; i++){
+if($(items[i]).hasClass('active') == true){
+    break;
+}
+}
+if (i==0) {
+  document.getElementById("displayarea").innerHTML = document.getElementById("trainee_name").value; 
+document.getElementById("trainee_name").value = "";
+document.getElementById("displayarea1").innerHTML = document.getElementById("trainee_role").value; 
+document.getElementById("trainee_role").value = "";
+document.getElementById("displayarea2").innerHTML = document.getElementById("trainee_email").value; 
+document.getElementById("trainee_email").value = "";
+document.getElementById("displayarea3").innerHTML = document.getElementById("mobile").value; 
+document.getElementById("mobile").value = "";
+}else{
+document.getElementById("displayarea4").innerHTML = document.getElementById("inputPassword").value; 
+document.getElementById("inputPassword").value = "";
+document.getElementById("displayarea5").innerHTML = document.getElementById("Addressline_one").value; 
+document.getElementById("Addressline_one").value = "";
+document.getElementById("displayarea6").innerHTML = document.getElementById("name_billing").value; 
+document.getElementById("name_billing").value = "";
+document.getElementById("displayarea7").innerHTML = document.getElementById("Addressline_two").value; 
+document.getElementById("Addressline_two").value = "";
+document.getElementById("displayarea8").innerHTML = document.getElementById("Email").value; 
+document.getElementById("Email").value = "";
+document.getElementById("displayarea9").innerHTML = document.getElementById("city").value; 
+document.getElementById("city").value = "";
+document.getElementById("displayarea10").innerHTML = document.getElementById("company").value; 
+document.getElementById("company").value = "";
+document.getElementById("displayarea11").innerHTML = document.getElementById("state").value; 
+document.getElementById("state").value = "";
+document.getElementById("displayarea12").innerHTML = document.getElementById("mobile").value; 
+document.getElementById("mobile").value = "";
+document.getElementById("displayarea13").innerHTML = document.getElementById("country").value; 
+document.getElementById("country").value = "";
+document.getElementById("displayarea14").innerHTML = document.getElementById("pincode").value; 
+document.getElementById("pincode").value = "";
+}
+}
+
 /*
  Function to add the new row (form) using Javascript
 */
@@ -186,7 +448,62 @@ function addNew() {
 $(document).on('click','#remove',function(){
       $(this).parents("#add_trainee_details").remove();
     });
-	
+var today = new Date();
+document.getElementById('dtText').innerHTML="Today's Date is :"+today;
+
+/*
+ Function to navigate between tabs
+*/
+
+function tabNavigation(){
+  var i, items = $('.nav-link'), pane = $('.tab-pane');
+  // next
+  $('.nexttab').on('click', function(){
+      for(i = 0; i < items.length; i++){
+          if($(items[i]).hasClass('active') == true){
+              break;
+          }
+      }
+      if(i < items.length - 1){
+        $('.prevtab').show();
+          // for tab
+          $(items[i]).removeClass('active');
+          $(items[i+1]).addClass('active');
+          // for pane
+          $(pane[i]).removeClass('show active');
+          $(pane[i+1]).addClass('show active');
+          if(i == items.length-2){
+           $('.nexttab').hide();
+           $('.prevtab').hide();
+        }else if(i != 0){
+          $('.prevtab').show();
+        }
+      }
+
+  });
+  // Prev
+  $('.prevtab').on('click', function(){
+      for(i = 0; i < items.length; i++){
+          if($(items[i]).hasClass('active') == true){
+              break;
+          }
+      }
+      if(i != 0){
+          // for tab
+          $(items[i]).removeClass('active');
+          $(items[i-1]).addClass('active');
+          // for pane
+          $(pane[i]).removeClass('show active');
+          $(pane[i-1]).addClass('show active');
+          if(i==1){
+          $('.prevtab').hide();
+          }
+
+      }
+  });
+}
+tabNavigation();
+
 </script>
 </body>
 </html>
